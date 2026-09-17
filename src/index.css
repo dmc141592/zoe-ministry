@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-accent: 'Cormorant Garamond', 'Georgia', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --color-ivory: #f8f3e7;
+  --color-ivory-dim: #efe6d2;
+  --color-ivory-deep: #e6d9bd;
+  --color-ink: #211d17;
+  --color-ink-soft: #4a4438;
+
+  --color-navy: #0a0d16;
+  --color-navy-deep: #05070d;
+  --color-navy-light: #161c2c;
+  --color-navy-mist: #232b40;
+
+  --color-gold: #c9a24c;
+  --color-gold-bright: #ecd28f;
+  --color-gold-dim: #8a723f;
+
+  --color-ember: #b3242f;
+  --color-ember-dim: #5c1620;
+
+  /* Cream/gold micro-scale used by the Seven Mountains visualization (Vision page). */
+  --color-cream-50: #fffefb;
+  --color-cream-100: #fbf6ea;
+  --color-gold-300: #d9b65b;
+  --color-gold-400: #c9a227;
+  --color-gold-500: #b08a1e;
+  --color-gold-600: #8c6c16;
+
+  --shadow-glow: 0 0 60px rgba(201, 162, 76, 0.25);
+  --shadow-soft: 0 10px 30px -14px rgba(27, 23, 18, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Safety net: no component anywhere on the site should be able to introduce a
+   horizontal scrollbar (e.g. a full-bleed breakout element that overhangs by a
+   pixel or two on the scrollbar side). */
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* subtle film-grain overlay used on cinematic sections */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* thin custom scrollbar for horizontal drag galleries */
+.drag-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.drag-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-gold-dim);
+  border-radius: 999px;
+}
+.drag-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold-dim) transparent;
+}
+
+/* pulsing location glow behind the city markers on the Connect-page Swiss map */
+@keyframes map-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+.map-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-pulse 2.8s ease-in-out infinite;
+}
+
+/* irregular background-star twinkle — each star gets its own duration/delay inline */
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+.star-twinkle {
+  animation-name: star-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+/* rare, short shooting star that sweeps across a cinematic starfield */
+@keyframes shooting-star-sweep {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--shooting-angle, 30deg)) scaleX(0);
+  }
+  12% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+    transform: rotate(var(--shooting-angle, 30deg)) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--shooting-angle, 30deg)) scaleX(1);
+  }
+}
+.shooting-star {
+  position: absolute;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent 0%, rgba(248, 243, 231, 0.55) 55%, #fbf6ea 100%);
+  transform-origin: left center;
+  animation-name: shooting-star-sweep;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* organic, continuously-morphing blob shapes for the About-page Family diagram */
+@keyframes family-blob-1 {
+  0%,
+  100% {
+    border-radius: 62% 38% 55% 45% / 55% 45% 60% 40%;
+  }
+  50% {
+    border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%;
+  }
+}
+@keyframes family-blob-2 {
+  0%,
+  100% {
+    border-radius: 40% 60% 55% 45% / 45% 55% 45% 55%;
+  }
+  50% {
+    border-radius: 58% 42% 40% 60% / 55% 45% 60% 40%;
+  }
+}
+@keyframes family-blob-3 {
+  0%,
+  100% {
+    border-radius: 55% 45% 60% 40% / 40% 60% 45% 55%;
+  }
+  50% {
+    border-radius: 42% 58% 45% 55% / 58% 42% 50% 50%;
+  }
+}
+.family-blob-1 {
+  animation: family-blob-1 9s ease-in-out infinite;
+}
+.family-blob-2 {
+  animation: family-blob-2 11s ease-in-out infinite;
+}
+.family-blob-3 {
+  animation: family-blob-3 10s ease-in-out infinite;
+}
+
+/* home page side dot nav: dashes flow continuously down the connector line */
+@keyframes home-nav-flow {
+  to {
+    stroke-dashoffset: -26;
+  }
+}
+.home-nav-flow {
+  animation: home-nav-flow 3.5s linear infinite;
+}
+
+/* home page side dot nav: subtle pulse on the active dot */
+@keyframes home-nav-dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+.home-nav-dot {
+  transition:
+    r 0.4s ease,
+    fill 0.4s ease;
+}
+.home-nav-dot-active {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: home-nav-dot-pulse 2.6s ease-in-out infinite;
+}
+
+/* home page side dot nav: breathing ring around the active dot */
+@keyframes home-nav-ring-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.home-nav-ring-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: home-nav-ring-pulse 2.6s ease-in-out infinite;
+}
