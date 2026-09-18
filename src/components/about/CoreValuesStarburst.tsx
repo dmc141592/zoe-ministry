@@ -454,7 +454,7 @@ export function CoreValuesStarburst() {
         el.setAttribute('y2', String(p2.y))
       })
       valueEls.forEach((ve) => {
-        const breathe = 10 * Math.sin(t * 0.5 + ve.angle)
+        const breathe = 48 * Math.sin(t * 0.5 + ve.angle)
         const len = 380 + breathe
         const p1 = pt(ve.angle, centerAnim.current + 2)
         const p2 = pt(ve.angle, len - BADGE_R - LINE_GAP)

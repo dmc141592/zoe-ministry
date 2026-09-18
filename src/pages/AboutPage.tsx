@@ -43,7 +43,7 @@ export function AboutPage() {
           <GoldRule className="mt-8" />
         </Reveal>
 
-        <Reveal delay={0.15} className="mt-14">
+        <Reveal delay={0.15} className="mt-[calc(3.5rem-1cm)]">
           <CoreValuesStarburst />
         </Reveal>
       </section>
