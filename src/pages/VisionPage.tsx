@@ -13,7 +13,7 @@ export function VisionPage() {
       <section
         id="statement"
         data-nav-label="Vision"
-        className="relative scroll-mt-28 overflow-hidden px-6 pb-16 pt-40 lg:pt-48"
+        className="relative scroll-target overflow-hidden px-6 pb-16 pt-40 lg:pt-48"
       >
         <Reveal>
           <div className="flex items-center justify-center gap-3.5">
@@ -44,7 +44,7 @@ export function VisionPage() {
 
       <div className="mx-auto h-px max-w-5xl bg-ink/6" />
 
-      <section id="seven-mountains" data-nav-label="Seven Mountains" className="relative scroll-mt-28 px-6 py-24 lg:px-10">
+      <section id="seven-mountains" data-nav-label="Seven Mountains" className="relative scroll-target px-6 py-24 lg:px-10">
         <Reveal className="mx-auto max-w-[640px] text-center">
           <p className="m-0 font-display text-[40px] text-ink">SEVEN MOUNTAINS</p>
 
@@ -59,7 +59,7 @@ export function VisionPage() {
         </Reveal>
       </section>
 
-      <section id="berge" data-nav-label="Berge" className="relative scroll-mt-28 px-6 pb-32 lg:px-10">
+      <section id="berge" data-nav-label="Berge" className="relative scroll-target px-6 pb-32 lg:px-10">
         <Parallax strength={24}>
           <SevenMountains />
         </Parallax>

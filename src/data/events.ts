@@ -69,3 +69,19 @@ export function sortByDateDescending(events: FlyerEvent[]): FlyerEvent[] {
 }
 
 export const sortedFlyerEvents = sortByDateDescending(flyerEvents)
+
+export interface Gathering {
+  id: string
+  title: string
+  // PLACEHOLDER — Bild ergänzen; solange leer, zeigt die Karte einen Bild-Platzhalter.
+  image?: string
+  place: string
+  time: string
+}
+
+// PLACEHOLDER — Titel, Orte und Zeiten vom Kunden bestätigen lassen.
+export const gatherings: Gathering[] = [
+  { id: 'cooking-and-prayer', title: 'Cooking and Prayer', place: 'Basel', time: 'Türöffnung 19:45 · Start 20:00' },
+  { id: 'dinner', title: 'Dinner', place: 'Solothurn', time: 'Türöffnung 19:45 · Start 20:00' },
+  { id: 'prayer-night', title: 'Prayer Night', place: 'Interlaken', time: 'Türöffnung 19:45 · Start 20:00' },
+]

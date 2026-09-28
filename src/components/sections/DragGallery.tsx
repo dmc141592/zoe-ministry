@@ -8,6 +8,9 @@ export function DragGallery({ children, className }: { children: ReactNode; clas
 
   const onPointerDown = (e: React.PointerEvent) => {
     if (!ref.current) return
+    // Links/Buttons in den Karten nicht als Drag-Start behandeln — sonst lenkt die Pointer-Capture
+    // den Klick auf den Container um und der Link reagiert nicht.
+    if ((e.target as HTMLElement).closest('a, button')) return
     setIsDragging(true)
     start.current = { x: e.clientX, scrollLeft: ref.current.scrollLeft }
     ref.current.setPointerCapture(e.pointerId)

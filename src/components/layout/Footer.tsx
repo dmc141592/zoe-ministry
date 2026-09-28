@@ -7,12 +7,23 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-navy-deep text-ivory">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <div className="mx-auto max-w-7xl px-6 pb-[calc(4rem_-_0.5cm)] pt-[108px] sm:pt-[calc(220px_-_0.5cm)] md:pt-[1.5cm] lg:px-10">
         <div className="grid gap-12 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <img src="/images/english_fulltransparent_Negative.png" alt="" aria-hidden="true" className="h-24 w-24 object-contain sm:h-28 sm:w-28" />
-            <span className="mt-4 block font-display text-2xl tracking-[0.18em] text-ivory">{site.name}</span>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ivory/60">
+          {/* Ab md stehen die Spalten nebeneinander: Container-pt = 1.5cm für Navigation/Standorte,
+              die Logo-Spalte gleicht die Differenz aus und bleibt an ihrer Position. */}
+          <div className="md:col-span-2 md:mt-[calc(220px_-_2cm)]">
+            {/* w-fit: Container ist genau so breit wie der Name, damit das Logo darüber zentriert werden kann.
+                Der Platzhalter hat die ursprüngliche Logohöhe, damit der restliche Footer nicht verrutscht;
+                das grosse Logo wächst von der Unterkante aus nach oben.
+                Das PNG hat ~29 % transparenten Rand (horizontal symmetrisch, daher sauber zentrierbar). */}
+            <div className="w-fit">
+              <div className="relative h-24 sm:h-28">
+                <img src="/images/english_fulltransparent_Negative.png" alt="" aria-hidden="true" className="absolute -bottom-[1cm] left-1/2 h-80 w-80 max-w-none -translate-x-1/2 object-contain sm:-bottom-[1.5cm] sm:h-[28rem] sm:w-[28rem]" />
+              </div>
+              {/* -mr gleicht das Letter-Spacing nach dem letzten Buchstaben aus, damit die Mitte optisch stimmt. */}
+              <span className="relative -mr-[0.18em] -mt-[calc(1.5cm_-_1rem)] block font-display text-2xl tracking-[0.18em] text-ivory">{site.name}</span>
+            </div>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-gold">
               {site.tagline}
             </p>
             <div className="mt-6 flex items-center gap-4">
@@ -40,7 +51,10 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5">
               {navigation.map((item) => (
                 <li key={item.label}>
-                  <Link to={item.to} className="text-sm text-ivory/70 transition-colors hover:text-ivory">
+                  <Link
+                    to={item.to ?? item.children?.[0]?.to ?? '/'}
+                    className="text-sm text-ivory/70 transition-colors hover:text-ivory"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -53,6 +67,7 @@ export function Footer() {
             <ul className="mt-4 space-y-4">
               {locations.map((loc) => (
                 <li key={loc.id} className="text-sm text-ivory/70">
+                  <p className="text-[0.65rem] uppercase tracking-[0.2em] text-gold/70">{loc.role}</p>
                   <p className="text-ivory/90">{loc.name} · {loc.canton}</p>
                   <p>{loc.street}</p>
                   <p>{loc.city}</p>
@@ -64,7 +79,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-ivory/10 pt-8 text-xs text-ivory/40 md:flex-row">
           <p>&copy; {new Date().getFullYear()} {site.name}. Alle Rechte vorbehalten.</p>
-          <p className="italic font-accent text-sm tracking-wide text-gold/70">Europe shall be saved.</p>
+          <p className="italic font-accent text-sm tracking-wide text-gold/70">OH DEATH,<br />Where is your Victor?</p>
         </div>
       </div>
     </footer>

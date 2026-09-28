@@ -2,6 +2,11 @@
 @import 'tailwindcss';
 
 @theme {
+  /* Fallback only, used until Header.tsx's ResizeObserver measures the real
+     rendered header height and overwrites this via an inline style on
+     :root — see .scroll-target below, which is what actually consumes it. */
+  --navbar-height: 72px;
+
   --font-display: 'Playfair Display', 'Georgia', serif;
   --font-accent: 'Cormorant Garamond', 'Georgia', serif;
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -71,6 +76,18 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Apply to every section that serves as an #anchor jump target, so it scrolls
+   to a stop exactly where the fixed header ends — no manual per-section
+   offset tuning needed. Works for both CSS-native anchor jumps and any
+   scrollIntoView() call, since scroll-margin-top is respected by both.
+   The +4px is a small breathing-room buffer on top of the exact, measured
+   navbar height — small enough that it's absorbed by each section's own
+   (much larger) internal top padding, so it never re-exposes the previous
+   section. */
+.scroll-target {
+  scroll-margin-top: calc(var(--navbar-height) + 4px);
 }
 
 /* subtle film-grain overlay used on cinematic sections */

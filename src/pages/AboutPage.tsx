@@ -13,7 +13,7 @@ export function AboutPage() {
       <section
         id="ueber-uns"
         data-nav-label="Über uns"
-        className="relative scroll-mt-28 overflow-hidden px-6 pb-20 pt-40 text-center lg:pt-48"
+        className="relative scroll-target overflow-hidden px-6 pb-20 pt-40 text-center lg:pt-48"
       >
         <div className="pointer-events-none absolute -top-24 left-1/2 h-96 w-[140%] -translate-x-1/2 rounded-full bg-gold/10 blur-[120px]" />
         <Reveal className="relative mx-auto max-w-3xl">
@@ -32,7 +32,7 @@ export function AboutPage() {
       <section
         id="core-values"
         data-nav-label="Werte"
-        className="scroll-mt-28 bg-[#F7F1E4] px-6 py-24 lg:px-10"
+        className="scroll-target bg-[#F7F1E4] px-6 py-24 lg:px-10"
       >
         <Reveal className="mx-auto max-w-3xl text-center">
           <GoldRule />
@@ -48,7 +48,7 @@ export function AboutPage() {
         </Reveal>
       </section>
 
-      <section id="faith-statement" data-nav-label="Bekenntnis" className="scroll-mt-28 bg-ivory-dim px-6 py-28 lg:px-10">
+      <section id="faith-statement" data-nav-label="Bekenntnis" className="scroll-target bg-ivory-dim px-6 py-28 lg:px-10">
         <Reveal className="mx-auto max-w-2xl text-center">
           <GoldRule />
           <h2 className="mt-6 font-display text-3xl text-ink sm:text-4xl">Faith Statement</h2>
@@ -66,7 +66,7 @@ export function AboutPage() {
         </Reveal>
       </section>
 
-      <section id="family" data-nav-label="Familie" className="scroll-mt-28 px-6 py-28 lg:px-10">
+      <section id="family" data-nav-label="Familie" className="scroll-target px-6 py-28 lg:px-10">
         <Reveal className="mx-auto max-w-2xl text-center">
           <GoldRule />
           <h2 className="mt-6 font-display text-3xl text-ink sm:text-4xl">Family</h2>

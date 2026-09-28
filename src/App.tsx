@@ -6,6 +6,7 @@ import { PageTransition } from '@/components/layout/PageTransition'
 import { ScrollManager } from '@/components/layout/ScrollManager'
 import { SideNav } from '@/components/layout/SideNav'
 import { AboutPage } from '@/pages/AboutPage'
+import { AboutPastorPage } from '@/pages/AboutPastorPage'
 import { ConnectPage } from '@/pages/ConnectPage'
 import { ContentPage } from '@/pages/ContentPage'
 import { EventsPage } from '@/pages/EventsPage'
@@ -26,6 +27,7 @@ export default function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
             <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
+            <Route path="/about-pastor" element={<PageTransition><AboutPastorPage /></PageTransition>} />
             <Route path="/vision" element={<PageTransition><VisionPage /></PageTransition>} />
             <Route path="/content" element={<PageTransition><ContentPage /></PageTransition>} />
             <Route path="/events" element={<PageTransition><EventsPage /></PageTransition>} />

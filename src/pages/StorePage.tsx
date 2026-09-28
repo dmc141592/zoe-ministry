@@ -8,14 +8,14 @@ import { book, merchItems } from '@/data/store'
 export function StorePage() {
   return (
     <div className="bg-ivory">
-      <section id="store-intro" data-nav-label="Store" className="scroll-mt-28 px-6 pb-16 pt-40 text-center lg:pt-48">
+      <section id="store-intro" data-nav-label="Store" className="scroll-target px-6 pb-16 pt-40 text-center lg:pt-48">
         <Reveal className="mx-auto max-w-2xl">
           <SectionLabel>Store</SectionLabel>
           <h1 className="mt-6 font-display text-4xl text-ink sm:text-5xl">Worte zum Mitnehmen.</h1>
         </Reveal>
       </section>
 
-      <section id="buch" data-nav-label="Buch" className="scroll-mt-28 px-6 py-16 lg:px-10">
+      <section id="buch" data-nav-label="Buch" className="scroll-target px-6 py-16 lg:px-10">
         <div className="mx-auto grid max-w-5xl gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <img src={book.cover} alt={book.title} className="mx-auto w-72 shadow-2xl lg:w-full" />
@@ -42,7 +42,7 @@ export function StorePage() {
         </div>
       </section>
 
-      <section id="autor" data-nav-label="Autor" className="scroll-mt-28 bg-ivory-dim px-6 py-24 lg:px-10">
+      <section id="autor" data-nav-label="Autor" className="scroll-target bg-ivory-dim px-6 py-24 lg:px-10">
         <div className="mx-auto grid max-w-4xl gap-10 lg:grid-cols-[auto_1fr] lg:items-center">
           <Reveal>
             <img src={book.author.image} alt={book.author.name} className="mx-auto h-40 w-40 rounded-full object-cover shadow-lg" />
@@ -55,7 +55,7 @@ export function StorePage() {
         </div>
       </section>
 
-      <section id="merch" data-nav-label="Merch" className="scroll-mt-28 px-6 py-28 lg:px-10">
+      <section id="merch" data-nav-label="Merch" className="scroll-target px-6 py-28 lg:px-10">
         <Reveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>Merch</SectionLabel>
           <h2 className="mt-6 font-display text-3xl text-ink sm:text-4xl">Bald verfügbar</h2>

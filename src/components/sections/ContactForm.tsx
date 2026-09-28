@@ -81,7 +81,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl bg-cream-100 p-6 shadow-soft sm:p-8">
+    <form onSubmit={handleSubmit} className="flex h-full flex-col rounded-2xl bg-cream-100 p-6 shadow-[0_24px_50px_-18px_rgba(27,23,18,0.35)] sm:p-8">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClasses}>
@@ -157,13 +157,16 @@ export function ContactForm() {
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gold-400 px-8 py-3 text-xs uppercase tracking-[0.25em] text-ink transition-colors hover:bg-gold-300"
-      >
-        Nachricht senden
-        <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
-      </button>
+      {/* mt-auto: Button sitzt unten, wenn das Formular auf die Höhe des Einladungsformulars gestreckt wird. */}
+      <div className="mt-auto pt-8">
+        <button
+          type="submit"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-gold-400 px-8 py-3 text-xs uppercase tracking-[0.25em] text-ink transition-colors hover:bg-gold-300"
+        >
+          Nachricht senden
+          <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
+        </button>
+      </div>
     </form>
   )
 }

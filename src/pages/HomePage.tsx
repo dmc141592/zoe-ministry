@@ -58,7 +58,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="willkommen" data-nav-label="Willkommen" className="bg-ivory px-6 py-28 lg:px-10">
+      <section id="willkommen" data-nav-label="Willkommen" className="scroll-target bg-ivory px-6 py-28 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <SectionLabel>Willkommen</SectionLabel>
@@ -82,7 +82,7 @@ export function HomePage() {
       <section
         id="vision"
         data-nav-label="Vision"
-        className="relative overflow-hidden bg-navy-deep px-6 py-28 text-ivory lg:px-10"
+        className="scroll-target relative overflow-hidden bg-navy-deep px-6 py-28 text-ivory lg:px-10"
       >
         <div className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-gold/10 blur-[120px]" />
         <div className="relative mx-auto grid max-w-6xl gap-16 lg:grid-cols-2 lg:items-center">
@@ -109,7 +109,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="werte" data-nav-label="Werte" className="bg-ivory px-6 py-28 lg:px-10">
+      <section id="werte" data-nav-label="Werte" className="scroll-target bg-ivory px-6 py-28 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <Reveal className="text-center">
             <SectionLabel>Core Values</SectionLabel>
@@ -131,7 +131,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="events" data-nav-label="Events" className="bg-navy px-6 py-28 text-ivory lg:px-10">
+      <section id="events" data-nav-label="Events" className="scroll-target bg-navy px-6 py-28 text-ivory lg:px-10">
         <Reveal className="mx-auto max-w-6xl text-center">
           <SectionLabel>Events</SectionLabel>
           <h2 className="mt-6 font-display text-3xl sm:text-4xl">Komm vorbei</h2>
@@ -162,7 +162,7 @@ export function HomePage() {
         </Reveal>
       </section>
 
-      <section id="store" data-nav-label="Store" className="bg-ivory px-6 py-28 lg:px-10">
+      <section id="store" data-nav-label="Store" className="scroll-target bg-ivory px-6 py-28 lg:px-10">
         <div className="mx-auto grid max-w-5xl gap-14 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <img src={book.cover} alt={book.title} className="mx-auto w-64 shadow-2xl lg:w-80" />
@@ -183,7 +183,7 @@ export function HomePage() {
       <section
         id="mitmachen"
         data-nav-label="Mitmachen"
-        className="relative overflow-hidden bg-navy-deep px-6 py-28 text-center text-ivory lg:px-10"
+        className="scroll-target relative overflow-hidden bg-navy-deep px-6 py-28 text-center text-ivory lg:px-10"
       >
         <div className="grain absolute inset-0" />
         <GoldRule className="relative mb-10" />
