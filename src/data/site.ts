@@ -59,7 +59,7 @@ export type NavSubItem = NavLeaf & {
 
 export type NavItem = {
   label: string
-  // Kein Link — öffnet nur das Dropdown (z.B. "About Us").
+  // Ohne Link öffnet der Punkt nur das Dropdown.
   to?: string
   children?: NavSubItem[]
 }
@@ -68,23 +68,25 @@ export const navigation: NavItem[] = [
   { label: 'Home', to: '/' },
   {
     label: 'About Us',
+    // Gleiche Verlinkung wie "About Church".
+    to: '/about',
     children: [
       {
         label: 'About Church',
         to: '/about',
         children: [
-          { label: 'Core Values', to: '/about#core-values' },
-          { label: 'Faith Statement', to: '/about#faith-statement' },
-          { label: 'Family', to: '/about#family' },
+          { label: 'Core Values', to: '/about#core-values-ansicht' },
+          { label: 'Faith Statement', to: '/about#faith-statement-ansicht' },
+          { label: 'Family', to: '/about#family-ansicht' },
         ],
       },
       {
         label: 'About Pastor',
-        to: '/about-pastor#pastor-journey',
+        to: '/about-pastor#pastor-journey-ansicht',
         children: [
-          { label: 'Pastor Journey', to: '/about-pastor#pastor-journey' },
-          { label: 'Pastor Invite', to: '/about-pastor#pastor-invite' },
-          { label: 'Family Story', to: '/about-pastor#family-story' },
+          { label: 'Pastor Journey', to: '/about-pastor#pastor-journey-ansicht' },
+          { label: 'Pastor Invite', to: '/about-pastor#pastor-invite-ansicht' },
+          { label: 'Family Story', to: '/about-pastor#family-story-ansicht' },
         ],
       },
     ],
@@ -92,27 +94,36 @@ export const navigation: NavItem[] = [
   {
     label: 'Vision',
     to: '/vision',
-    children: [{ label: 'Seven Mountains', to: '/vision#seven-mountains' }],
+    children: [{ label: 'Seven Mountains', to: '/vision#seven-mountains-ansicht' }],
   },
   {
     label: 'Content',
     to: '/content',
     children: [
-      { label: 'Preach', to: '/content#preach' },
-      { label: 'Testimonies', to: '/content#testimonies' },
+      { label: 'Preach', to: '/content#preach-ansicht' },
+      { label: 'Testimonies', to: '/content#testimonies-ansicht' },
     ],
   },
   {
     label: 'Events & Calendar',
     to: '/events',
     children: [
-      { label: 'Sunday Service', to: '/events#anlaesse' },
-      { label: 'Gathering & Events', to: '/events#gatherings' },
+      { label: 'Sunday Service', to: '/events#anlaesse-ansicht' },
+      { label: 'Gathering & Events', to: '/events#gatherings-ansicht' },
       { label: 'Calendar', to: '/events#kalender-ansicht' },
     ],
   },
   { label: 'Store', to: '/store' },
-  { label: 'Connect', to: '/connect' },
+  {
+    label: 'Connect',
+    to: '/connect',
+    // Gleiche Sprungziele wie die Seitennavigation auf der Connect-Seite.
+    children: [
+      { label: 'Standorte', to: '/connect#standorte-ansicht' },
+      { label: 'Spenden', to: '/connect#spenden-ansicht' },
+      { label: 'Kontakt', to: '/connect#kontakt-ansicht' },
+    ],
+  },
 ]
 
 // PLACEHOLDER — Bankangaben für die Spenden-Sektion vom Kunden einholen.

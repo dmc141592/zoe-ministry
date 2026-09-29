@@ -3,6 +3,7 @@ import { FamilyBubbles } from '@/components/about/FamilyBubbles'
 import { TeamWheel } from '@/components/about/TeamWheel'
 import { Reveal } from '@/components/motion/Reveal'
 import { GoldRule } from '@/components/ui/GoldRule'
+import { SectionAnchor } from '@/components/ui/SectionAnchor'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { faithStatement } from '@/data/coreValues'
 import { familyVerse } from '@/data/family'
@@ -32,8 +33,9 @@ export function AboutPage() {
       <section
         id="core-values"
         data-nav-label="Werte"
-        className="scroll-target bg-[#F7F1E4] px-6 py-24 lg:px-10"
+        className="relative scroll-target bg-[#F7F1E4] px-6 py-24 lg:px-10"
       >
+        <SectionAnchor id="core-values-ansicht" navbars={2} />
         <Reveal className="mx-auto max-w-3xl text-center">
           <GoldRule />
           <h2 className="mt-6 font-display text-3xl text-ink sm:text-4xl">Core Values</h2>
@@ -48,7 +50,8 @@ export function AboutPage() {
         </Reveal>
       </section>
 
-      <section id="faith-statement" data-nav-label="Bekenntnis" className="scroll-target bg-ivory-dim px-6 py-28 lg:px-10">
+      <section id="faith-statement" data-nav-label="Bekenntnis" className="relative scroll-target bg-ivory-dim px-6 py-28 lg:px-10">
+        <SectionAnchor id="faith-statement-ansicht" navbars={2} />
         <Reveal className="mx-auto max-w-2xl text-center">
           <GoldRule />
           <h2 className="mt-6 font-display text-3xl text-ink sm:text-4xl">Faith Statement</h2>
@@ -66,7 +69,8 @@ export function AboutPage() {
         </Reveal>
       </section>
 
-      <section id="family" data-nav-label="Familie" className="scroll-target px-6 py-28 lg:px-10">
+      <section id="family" data-nav-label="Familie" className="relative scroll-target px-6 py-28 lg:px-10">
+        <SectionAnchor id="family-ansicht" navbars={2} />
         <Reveal className="mx-auto max-w-2xl text-center">
           <GoldRule />
           <h2 className="mt-6 font-display text-3xl text-ink sm:text-4xl">Family</h2>
@@ -77,12 +81,15 @@ export function AboutPage() {
 
         <Reveal delay={0.15} className="mx-auto mt-16 max-w-4xl">
           <div className="rounded-xl bg-cream-100 px-4 pb-16 pt-10 sm:px-8 sm:pb-20 sm:pt-12">
-            <div className="relative mx-auto aspect-[780/825] w-full max-w-[780px]">
+            {/* Gegenüber dem Original (780x825-Raster, 37.8 Einheiten = 1cm bei voller Breite von 780px):
+                Danuxy/Melvin 1.7cm höher, Team-Rad samt Beschriftung 2.2cm höher (83.16 Einheiten).
+                Die negative Marge (83.16/780 der Breite) zieht den Kasten unten entsprechend nach. */}
+            <div className="relative mx-auto mb-[-10.662%] aspect-[780/825] w-full max-w-[780px]">
               <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 780 825" aria-hidden>
-                <line x1={390} y1={145} x2={647} y2={438} stroke="#C9A227" strokeWidth={1} opacity={0.35} />
-                <line x1={390} y1={145} x2={133} y2={438} stroke="#C9A227" strokeWidth={1} opacity={0.35} />
-                <line x1={647} y1={438} x2={390} y2={695} stroke="#C9A227" strokeWidth={1} opacity={0.4} />
-                <line x1={133} y1={438} x2={390} y2={695} stroke="#C9A227" strokeWidth={1} opacity={0.4} />
+                <line x1={390} y1={145} x2={647} y2={373.74} stroke="#C9A227" strokeWidth={1} opacity={0.35} />
+                <line x1={390} y1={145} x2={133} y2={373.74} stroke="#C9A227" strokeWidth={1} opacity={0.35} />
+                <line x1={647} y1={373.74} x2={390} y2={611.84} stroke="#C9A227" strokeWidth={1} opacity={0.4} />
+                <line x1={133} y1={373.74} x2={390} y2={611.84} stroke="#C9A227" strokeWidth={1} opacity={0.4} />
               </svg>
 
               <FamilyBubbles />

@@ -65,14 +65,17 @@ export function Footer() {
           <div>
             <h3 className="text-xs uppercase tracking-[0.3em] text-gold">Standorte</h3>
             <ul className="mt-4 space-y-4">
-              {locations.map((loc) => (
-                <li key={loc.id} className="text-sm text-ivory/70">
-                  <p className="text-[0.65rem] uppercase tracking-[0.2em] text-gold/70">{loc.role}</p>
-                  <p className="text-ivory/90">{loc.name} · {loc.canton}</p>
-                  <p>{loc.street}</p>
-                  <p>{loc.city}</p>
-                </li>
-              ))}
+              {/* Nur der Hauptstandort — die Partnerkirche wird im Footer nicht aufgeführt. */}
+              {locations
+                .filter((loc) => loc.role === 'Hauptstandort')
+                .map((loc) => (
+                  <li key={loc.id} className="text-sm text-ivory/70">
+                    <p className="text-[0.65rem] uppercase tracking-[0.2em] text-gold/70">{loc.role}</p>
+                    <p className="text-ivory/90">{loc.name} · {loc.canton}</p>
+                    <p>{loc.street}</p>
+                    <p>{loc.city}</p>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>

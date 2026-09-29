@@ -88,6 +88,58 @@ interface ShootingStar {
   duration: number
 }
 
+// Elemente mit diesem Attribut (in derselben <section>) werden von Sternschnuppen umflogen,
+// z.B. die Schweizer Karte auf der Connect-Seite.
+const AVOID_ATTR = 'data-shooting-stars-avoid'
+const AVOID_PADDING = 24 // px Abstand zum ausgesparten Element
+const MAX_ATTEMPTS = 30
+
+/**
+ * Picks a start point + angle + length for a shooting star. Without avoid-elements it keeps the
+ * original upper-left spawn area. With them, it samples the area from the top down to the
+ * avoided element's bottom and rejects any streak whose path would cross it (padded).
+ */
+function pickShootingStar(container: HTMLElement | null): Omit<ShootingStar, 'id' | 'duration'> | null {
+  const angle = 20 + Math.random() * 25
+  const length = 150 + Math.random() * 100
+  const avoidEls = container?.closest('section')?.querySelectorAll<HTMLElement>(`[${AVOID_ATTR}]`)
+
+  if (!container || !avoidEls || avoidEls.length === 0) {
+    return { top: Math.random() * 25, left: Math.random() * 60, angle, length }
+  }
+
+  const box = container.getBoundingClientRect()
+  const rects = Array.from(avoidEls, (el) => {
+    const r = el.getBoundingClientRect()
+    return {
+      left: r.left - box.left - AVOID_PADDING,
+      right: r.right - box.left + AVOID_PADDING,
+      top: r.top - box.top - AVOID_PADDING,
+      bottom: r.bottom - box.top + AVOID_PADDING,
+    }
+  })
+  const maxY = Math.min(box.height, Math.max(...rects.map((r) => r.bottom)))
+
+  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+    const a = angle + (Math.random() - 0.5) * 10
+    const dx = Math.cos((a * Math.PI) / 180) * length
+    const dy = Math.sin((a * Math.PI) / 180) * length
+    const x0 = Math.random() * (box.width - dx)
+    const y0 = Math.random() * Math.max(0, maxY - dy)
+    // Streifen an mehreren Punkten prüfen — keiner darf im ausgesparten Bereich liegen.
+    let hits = false
+    for (let i = 0; i <= 12 && !hits; i++) {
+      const x = x0 + (dx * i) / 12
+      const y = y0 + (dy * i) / 12
+      hits = rects.some((r) => x >= r.left && x <= r.right && y >= r.top && y <= r.bottom)
+    }
+    if (!hits) {
+      return { top: (y0 / box.height) * 100, left: (x0 / box.width) * 100, angle: a, length }
+    }
+  }
+  return null // kein freier Platz gefunden (z.B. schmaler Bildschirm) — diesmal keine Sternschnuppe
+}
+
 /**
  * Rare, short shooting star — checked every 6–10s with a ~45% chance of firing,
  * so on average one appears roughly every 15–20s. Deliberately infrequent.
@@ -95,6 +147,7 @@ interface ShootingStar {
 function ShootingStars() {
   const [stars, setStars] = useState<ShootingStar[]>([])
   const nextId = useRef(0)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let cancelled = false
@@ -104,17 +157,11 @@ function ShootingStars() {
       const wait = 6000 + Math.random() * 4000
       timeoutId = setTimeout(() => {
         if (cancelled) return
-        if (Math.random() < 0.45) {
+        const placement = Math.random() < 0.45 ? pickShootingStar(containerRef.current) : null
+        if (placement) {
           const id = nextId.current++
           const duration = 1.2 + Math.random() * 0.3
-          const star: ShootingStar = {
-            id,
-            top: Math.random() * 25,
-            left: Math.random() * 60,
-            angle: 20 + Math.random() * 25,
-            length: 150 + Math.random() * 100,
-            duration,
-          }
+          const star: ShootingStar = { id, duration, ...placement }
           setStars((prev) => [...prev, star])
           setTimeout(() => {
             if (!cancelled) setStars((prev) => prev.filter((s) => s.id !== id))
@@ -132,7 +179,7 @@ function ShootingStars() {
   }, [])
 
   return (
-    <>
+    <div ref={containerRef} className="absolute inset-0">
       {stars.map((star) => (
         <span
           key={star.id}
@@ -148,7 +195,7 @@ function ShootingStars() {
           }
         />
       ))}
-    </>
+    </div>
   )
 }
 

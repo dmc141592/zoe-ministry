@@ -2,6 +2,7 @@ import { PlayCircle } from 'lucide-react'
 import { Reveal, StaggerGroup, StaggerItem } from '@/components/motion/Reveal'
 import { CinematicBackdrop } from '@/components/ui/Atmosphere'
 import { GoldRule } from '@/components/ui/GoldRule'
+import { SectionAnchor } from '@/components/ui/SectionAnchor'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { sermons, testimonies, type VideoTile } from '@/data/content'
 
@@ -46,7 +47,8 @@ export function ContentPage() {
         </Reveal>
       </section>
 
-      <section id="preach" data-nav-label="Preach" className="scroll-target px-6 py-24 lg:px-10">
+      <section id="preach" data-nav-label="Preach" className="relative scroll-target px-6 py-24 lg:px-10">
+        <SectionAnchor id="preach-ansicht" />
         <Reveal className="mx-auto max-w-2xl text-center">
           <GoldRule />
           <h2 className="mt-6 font-display text-3xl sm:text-4xl">Preach</h2>
@@ -60,7 +62,8 @@ export function ContentPage() {
         </StaggerGroup>
       </section>
 
-      <section id="testimonies" data-nav-label="Testimonies" className="scroll-target px-6 py-24 lg:px-10">
+      <section id="testimonies" data-nav-label="Testimonies" className="relative scroll-target px-6 py-24 lg:px-10">
+        <SectionAnchor id="testimonies-ansicht" />
         <Reveal className="mx-auto max-w-2xl text-center">
           <GoldRule />
           <h2 className="mt-6 font-display text-3xl sm:text-4xl">Testimonies</h2>

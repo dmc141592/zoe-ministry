@@ -124,7 +124,7 @@ export function HomePage() {
             ))}
           </StaggerGroup>
           <Reveal className="mt-14 text-center">
-            <ButtonLink to="/about#core-values" variant="outline-dark">
+            <ButtonLink to="/about#core-values-ansicht" variant="outline-dark">
               Alle sieben Werte
             </ButtonLink>
           </Reveal>
@@ -201,7 +201,7 @@ export function HomePage() {
             </div>
           </div>
           <div className="relative mt-12">
-            <ButtonLink to="/connect#spenden" variant="gold">
+            <ButtonLink to="/connect#spenden-ansicht" variant="gold">
               Spenden
             </ButtonLink>
           </div>

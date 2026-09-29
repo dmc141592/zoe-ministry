@@ -197,7 +197,7 @@ export function Header() {
 
         <div className="hidden lg:block">
           <Link
-            to="/connect#spenden"
+            to="/connect#spenden-ansicht"
             className="inline-flex items-center border border-gold/70 px-6 py-2.5 text-[0.7rem] uppercase tracking-[0.25em] text-gold transition-colors hover:bg-gold hover:text-navy-deep"
           >
             Spenden
@@ -268,7 +268,7 @@ export function Header() {
                 </div>
               ))}
               <Link
-                to="/connect#spenden"
+                to="/connect#spenden-ansicht"
                 className="mt-6 inline-flex items-center justify-center border border-gold px-6 py-3 text-[0.7rem] uppercase tracking-[0.25em] text-gold"
               >
                 Spenden

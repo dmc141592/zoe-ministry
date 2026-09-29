@@ -67,9 +67,9 @@ const markerStyle: Record<MarkerKind, { r: number; halo: number; fill: string; h
 
 const FONT_SIZE = 11 * SCALE
 
-// Lichtpuls auf den Linien: alle 10 s, abwechselnd alle gleichzeitig Richtung Solothurn und
-// von Solothurn weg. Ein Zyklus = 20 s (einmal hinein, einmal hinaus).
-const PULSE_CYCLE = 20
+// Lichtpuls auf den Linien: alle 5 s, abwechselnd alle gleichzeitig Richtung Solothurn und
+// von Solothurn weg. Ein Zyklus = 10 s (einmal hinein, einmal hinaus).
+const PULSE_CYCLE = 10
 const PULSE_TRAVEL = 1.5
 const PULSE_START = 0.6 + 1.2 // erst nachdem die Linien fertig gezeichnet sind
 const t = PULSE_TRAVEL / PULSE_CYCLE
@@ -98,8 +98,9 @@ export function SwissMap() {
   const svgRef = useRef<SVGSVGElement>(null)
   const inView = useInView(svgRef, { once: true, amount: 0.5 })
 
+  // data-shooting-stars-avoid: Sternschnuppen im Hintergrund fliegen nur um die Karte herum.
   return (
-    <div className="relative mx-auto w-full max-w-5xl">
+    <div data-shooting-stars-avoid className="relative mx-auto w-full max-w-5xl">
       <svg
         ref={svgRef}
         viewBox={`${VIEWBOX.x} ${VIEWBOX.y} ${VIEWBOX.width} ${VIEWBOX.height}`}

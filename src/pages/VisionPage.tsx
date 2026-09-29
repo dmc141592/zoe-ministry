@@ -1,3 +1,4 @@
+import { SectionAnchor } from '@/components/ui/SectionAnchor'
 import { Parallax } from '@/components/motion/Parallax'
 import { Reveal, StaggerGroup, StaggerItem } from '@/components/motion/Reveal'
 import { GoldRule } from '@/components/ui/GoldRule'
@@ -45,6 +46,7 @@ export function VisionPage() {
       <div className="mx-auto h-px max-w-5xl bg-ink/6" />
 
       <section id="seven-mountains" data-nav-label="Seven Mountains" className="relative scroll-target px-6 py-24 lg:px-10">
+        <SectionAnchor id="seven-mountains-ansicht" />
         <Reveal className="mx-auto max-w-[640px] text-center">
           <p className="m-0 font-display text-[40px] text-ink">SEVEN MOUNTAINS</p>
 

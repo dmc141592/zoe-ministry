@@ -11,6 +11,15 @@ const HERO_OFFSET = 140
 const GOLD = '#B8892F'
 const DOT_INACTIVE = '#B9AF9C'
 
+// Extra offset (in navbar heights) for side-nav jumps, on top of the dropdown's jump target.
+// Default is one navbar lower. About Us / Events keep the dropdown's exact spots; Connect's
+// anchors already sit one navbar below each section, shared with its dropdown.
+const SIDE_NAV_EXTRA_NAVBARS: Record<string, number> = {
+  '/about': 0,
+  '/events': 0,
+  '/connect': 0,
+}
+
 const RING_ANGLES = Array.from({ length: RING_COUNT }, (_, i) => (i / RING_COUNT) * Math.PI * 2)
 
 interface SectionInfo {
@@ -148,8 +157,22 @@ export function SideNav() {
   const lineY2 = lastDotY + 30
   const activeY = START_Y + activeIndex * SPACING
 
+  // Start from the dropdown's jump target — the section's offset anchor (`<id>-ansicht`, see
+  // SectionAnchor) if it has one, otherwise the section itself — then add the page's extra offset.
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    const target = document.getElementById(`${id}-ansicht`) ?? document.getElementById(id)
+    if (!target) return
+    const extra = SIDE_NAV_EXTRA_NAVBARS[location.pathname] ?? 1
+    if (extra === 0) {
+      target.scrollIntoView({ behavior: 'smooth' })
+      return
+    }
+    const navbar =
+      parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) || 72
+    // Same landing spot scrollIntoView would give (respecting .scroll-target's margin), plus `extra` navbars.
+    const scrollMargin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0
+    const top = target.getBoundingClientRect().top + window.scrollY - scrollMargin + extra * navbar
+    window.scrollTo({ top, behavior: 'smooth' })
   }
 
   return (

@@ -197,7 +197,7 @@ export function TeamWheel() {
     <>
       <div
         ref={zoneRef}
-        className="absolute left-1/2 top-[84.24%] h-[25.45%] w-[82.05%] -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+        className="absolute left-1/2 top-[74.16%] h-[25.45%] w-[82.05%] -translate-x-1/2 -translate-y-1/2 cursor-pointer"
         style={{ touchAction: 'pan-y' }}
       >
         <div className="absolute inset-0 flex items-center justify-center">
@@ -228,7 +228,7 @@ export function TeamWheel() {
         </div>
       </div>
 
-      <div className="absolute left-0 top-[98.79%] w-full text-center">
+      <div className="absolute left-0 top-[88.71%] w-full text-center">
         <p className="font-display text-xl text-ink">{caption.name}</p>
         <p className="mt-1 text-[11px] uppercase tracking-[0.08em] text-gold-500">{caption.role}</p>
       </div>

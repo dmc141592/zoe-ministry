@@ -32,7 +32,7 @@ const blobStyles: BlobStyle[] = [
   {
     // Pastor's wife — right, one tier lower (top% derived from the shared 780x825
     // canvas so this bubble's rendered center lands exactly on the connecting line).
-    position: 'left-[83%] top-[53.09%] -translate-x-1/2 -translate-y-1/2',
+    position: 'left-[83%] top-[45.30%] -translate-x-1/2 -translate-y-1/2',
     size: 'h-[110px] w-[116px] sm:h-[155px] sm:w-[163px] lg:h-[180px] lg:w-[190px]',
     gradient: 'linear-gradient(160deg,#4a3418,#241a0c)',
     borderWidth: '2.5px',
@@ -45,7 +45,7 @@ const blobStyles: BlobStyle[] = [
   },
   {
     // Right hand / operations — left, same tier as the wife
-    position: 'left-[17%] top-[53.09%] -translate-x-1/2 -translate-y-1/2',
+    position: 'left-[17%] top-[45.30%] -translate-x-1/2 -translate-y-1/2',
     size: 'h-[110px] w-[116px] sm:h-[155px] sm:w-[163px] lg:h-[180px] lg:w-[190px]',
     gradient: 'linear-gradient(160deg,#2a3550,#141a28)',
     borderWidth: '2.5px',

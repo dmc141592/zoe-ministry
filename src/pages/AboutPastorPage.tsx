@@ -3,6 +3,7 @@ import { ImageIcon } from 'lucide-react'
 import { useEffect, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { Reveal } from '@/components/motion/Reveal'
+import { SectionAnchor } from '@/components/ui/SectionAnchor'
 import { cn } from '@/lib/utils'
 
 // PLACEHOLDER — Bilder und Texte dieser Seite vom Kunden einholen und hier ersetzen.
@@ -150,6 +151,7 @@ function BandBlock({
         cta && 'overflow-hidden',
       )}
     >
+      <SectionAnchor id={`${id}-ansicht`} />
       {!cta && <div aria-hidden className="absolute inset-x-0 bottom-0 top-0 -z-10 bg-ivory-dim lg:bottom-24" />}
       <div className="relative mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-2 lg:gap-20">
         <div className={cn('pb-4 pt-6 lg:pb-24 lg:pt-10', reverse && 'lg:order-2')}>
@@ -225,7 +227,8 @@ function MeetBlock({
   reverse?: boolean
 }) {
   return (
-    <section id={id} data-nav-label={navLabel} className="scroll-target px-6 py-28 lg:px-10">
+    <section id={id} data-nav-label={navLabel} className="relative scroll-target px-6 py-28 lg:px-10">
+      {id && <SectionAnchor id={`${id}-ansicht`} />}
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12 lg:gap-0">
         {/* z-10: Bildspalte liegt über dem gerahmten Namenskasten — dessen Rahmen läuft hinter dem Bild durch. */}
         <Reveal className={cn('relative isolate z-10 mb-16 lg:col-span-5 lg:mb-0', reverse && 'lg:order-2')}>
@@ -295,7 +298,7 @@ export function AboutPastorPage() {
         id="pastor-journey"
         navLabel="Journey"
         title="Pastor Journey"
-        cta={{ label: 'Pastor einladen', to: '/about-pastor#pastor-invite' }}
+        cta={{ label: 'Pastor einladen', to: '/about-pastor#pastor-invite-ansicht' }}
         media={<Gallery items={JOURNEY_GALLERY} interval={7000} className="aspect-[4/5] w-full shadow-soft" />}
         tone="beige"
         first

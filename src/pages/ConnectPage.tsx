@@ -7,6 +7,7 @@ import { SwissMap } from '@/components/sections/SwissMap'
 import { Reveal } from '@/components/motion/Reveal'
 import { CinematicBackdrop } from '@/components/ui/Atmosphere'
 import { GoldRule } from '@/components/ui/GoldRule'
+import { SectionAnchor } from '@/components/ui/SectionAnchor'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { donation, locationAnchor, locations, regionalMeetings, site } from '@/data/site'
 
@@ -83,6 +84,8 @@ export function ConnectPage() {
         data-nav-label="Standorte"
         className="relative scroll-target overflow-hidden px-6 pb-24 pt-40 lg:pt-48"
       >
+        {/* Sprungziele für Dropdown + Seitennavigation: eine Navbar-Höhe unter dem Sektionsanfang. */}
+        <SectionAnchor id="standorte-ansicht" />
         <CinematicBackdrop starsExcludeZone={{ top: [22, 92], left: [8, 92] }} shootingStars />
         <Reveal className="relative mx-auto max-w-2xl text-center">
           <SectionLabel>Connect · Network</SectionLabel>
@@ -100,7 +103,7 @@ export function ConnectPage() {
           </Reveal>
 
           <Reveal delay={0.3} className="mt-12">
-            <h2 className={groupHeading}>Regionaltreffen &amp; Partnerkirche</h2>
+            <h2 className={groupHeading}>Regionaltreffen &amp; Standorte</h2>
           </Reveal>
           <div className="relative grid gap-8 sm:grid-cols-2">
             {/* Gemeinsames Sprungziel für Basel, Interlaken und Zürich auf der Karte — 2.9cm über der Basel-Karte. */}
@@ -120,7 +123,7 @@ export function ConnectPage() {
               </Reveal>
             ))}
             <Reveal delay={0.35 + regionalMeetings.length * 0.1}>
-              <AddressCard loc={partnerChurch} caption={`${partnerChurch.canton} · Partnerkirche`} />
+              <AddressCard loc={partnerChurch} caption={partnerChurch.canton} />
             </Reveal>
           </div>
         </div>
@@ -132,7 +135,8 @@ export function ConnectPage() {
         style={{ background: 'linear-gradient(to bottom, var(--color-ink), var(--color-cream-100))' }}
       />
 
-      <section id="spenden" data-nav-label="Spenden" className="scroll-target bg-cream-100 px-6 py-28 text-ink lg:px-10">
+      <section id="spenden" data-nav-label="Spenden" className="relative scroll-target bg-cream-100 px-6 py-28 text-ink lg:px-10">
+        <SectionAnchor id="spenden-ansicht" />
         <Reveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>Spenden</SectionLabel>
           <h2 className="mt-6 font-display text-3xl text-ink sm:text-4xl">Grosszügigkeit in Aktion</h2>
@@ -150,7 +154,8 @@ export function ConnectPage() {
         </Reveal>
       </section>
 
-      <section id="kontakt" data-nav-label="Kontakt" className="scroll-target bg-cream-100 px-6 py-28 text-ink lg:px-10">
+      <section id="kontakt" data-nav-label="Kontakt" className="relative scroll-target bg-cream-100 px-6 py-28 text-ink lg:px-10">
+        <SectionAnchor id="kontakt-ansicht" />
         {/* Zwei Formulare nebeneinander: helles Kontaktformular, dunkles Einladungsformular. */}
         {/* Spalten strecken sich auf gleiche Höhe, die Formulare füllen den Rest — so enden beide gleich tief. */}
         <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-2 lg:gap-12">

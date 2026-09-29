@@ -4,6 +4,7 @@ import { DragGallery } from '@/components/sections/DragGallery'
 import { StyledCalendar } from '@/components/events/StyledCalendar'
 import { CinematicBackdrop } from '@/components/ui/Atmosphere'
 import { Reveal } from '@/components/motion/Reveal'
+import { SectionAnchor } from '@/components/ui/SectionAnchor'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { gatherings, sortedFlyerEvents } from '@/data/events'
 
@@ -44,7 +45,8 @@ export function EventsPage() {
         </Reveal>
       </section>
 
-      <section id="anlaesse" data-nav-label="Sunday Services" className="scroll-target px-6 py-20 lg:px-10">
+      <section id="anlaesse" data-nav-label="Sunday Services" className="relative scroll-target px-6 py-20 lg:px-10">
+        <SectionAnchor id="anlaesse-ansicht" />
         <RowHeading title="Sunday Services" />
 
         <DragGallery className="mx-auto max-w-6xl px-1">
@@ -65,7 +67,8 @@ export function EventsPage() {
         </DragGallery>
       </section>
 
-      <section id="gatherings" data-nav-label="Gatherings" className="scroll-target px-6 pb-20 lg:px-10">
+      <section id="gatherings" data-nav-label="Gatherings" className="relative scroll-target px-6 pb-20 lg:px-10">
+        <SectionAnchor id="gatherings-ansicht" />
         <RowHeading title="Gathering & Events" />
 
         <DragGallery className="mx-auto max-w-6xl px-1">
